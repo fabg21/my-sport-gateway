@@ -1,0 +1,32 @@
+{
+  "mySportGatewayApp": {
+    "mySportPlayersPlayers": {
+      "home": {
+        "title": "Players",
+        "createLabel": "Create a new Players",
+        "createOrEditLabel": "Create or edit a Players",
+        "notFound": "No Players found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Players {{ id }}?"
+      },
+      "detail": {
+        "title": "Players"
+      },
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "dateOfBirth": "Date Of Birth",
+      "email": "Email",
+      "address": "Address",
+      "phone": "Phone",
+      "avatar": "Avatar"
+    }
+  },
+  "mySportPlayersApp": {
+    "mySportPlayersPlayers": {
+      "created": "A new Players is created with identifier {{ param }}",
+      "updated": "A Players is updated with identifier {{ param }}",
+      "deleted": "A Players is deleted with identifier {{ param }}"
+    }
+  }
+}

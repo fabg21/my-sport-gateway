@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="players">
+            <h2><span jhiTranslate="mySportGatewayApp.mySportPlayersPlayers.detail.title">Players</span> {{players.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mySportGatewayApp.mySportPlayersPlayers.firstname">Firstname</span></dt>
+                <dd>
+                    <span>{{players.firstname}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportPlayersPlayers.lastname">Lastname</span></dt>
+                <dd>
+                    <span>{{players.lastname}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportPlayersPlayers.dateOfBirth">Date Of Birth</span></dt>
+                <dd>
+                    <span>{{players.dateOfBirth}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportPlayersPlayers.email">Email</span></dt>
+                <dd>
+                    <span>{{players.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportPlayersPlayers.address">Address</span></dt>
+                <dd>
+                    <span>{{players.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportPlayersPlayers.phone">Phone</span></dt>
+                <dd>
+                    <span>{{players.phone}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportPlayersPlayers.avatar">Avatar</span></dt>
+                <dd>
+                    <span>{{players.avatar}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/players', players.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

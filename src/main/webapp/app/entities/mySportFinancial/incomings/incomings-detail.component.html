@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="incomings">
+            <h2><span jhiTranslate="mySportGatewayApp.mySportFinancialIncomings.detail.title">Incomings</span> {{incomings.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mySportGatewayApp.mySportFinancialIncomings.label">Label</span></dt>
+                <dd>
+                    <span>{{incomings.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportFinancialIncomings.amount">Amount</span></dt>
+                <dd>
+                    <span>{{incomings.amount}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportFinancialIncomings.status">Status</span></dt>
+                <dd>
+                    <span>{{incomings.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportFinancialIncomings.category">Category</span></dt>
+                <dd>
+                    <span>{{incomings.category}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/incomings', incomings.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

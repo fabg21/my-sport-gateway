@@ -1,0 +1,28 @@
+{
+  "mySportGatewayApp": {
+    "mySportFinancialSpending": {
+      "home": {
+        "title": "Spendings",
+        "createLabel": "Create a new Spending",
+        "createOrEditLabel": "Create or edit a Spending",
+        "notFound": "No Spendings found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Spending {{ id }}?"
+      },
+      "detail": {
+        "title": "Spending"
+      },
+      "label": "Label",
+      "amount": "Amount",
+      "status": "Status"
+    }
+  },
+  "mySportFinancialApp": {
+    "mySportFinancialSpending": {
+      "created": "A new Spending is created with identifier {{ param }}",
+      "updated": "A Spending is updated with identifier {{ param }}",
+      "deleted": "A Spending is deleted with identifier {{ param }}"
+    }
+  }
+}

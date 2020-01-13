@@ -1,0 +1,29 @@
+{
+  "mySportGatewayApp": {
+    "mySportFinancialIncomings": {
+      "home": {
+        "title": "Incomings",
+        "createLabel": "Créer un nouveau Incomings",
+        "createOrEditLabel": "Créer ou éditer un Incomings",
+        "notFound": "Aucun Incomings trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Incomings {{ id }} ?"
+      },
+      "detail": {
+        "title": "Incomings"
+      },
+      "label": "Label",
+      "amount": "Amount",
+      "status": "Status",
+      "category": "Category"
+    }
+  },
+  "mySportFinancialApp": {
+    "mySportFinancialIncomings": {
+      "created": "Un nouveau Incomings a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Incomings avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Incomings avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

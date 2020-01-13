@@ -1,0 +1,28 @@
+{
+  "mySportGatewayApp": {
+    "mySportTeamSeason": {
+      "home": {
+        "title": "Seasons",
+        "createLabel": "Créer un nouveau Season",
+        "createOrEditLabel": "Créer ou éditer un Season",
+        "notFound": "Aucun Season trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Season {{ id }} ?"
+      },
+      "detail": {
+        "title": "Season"
+      },
+      "debut": "Debut",
+      "fin": "Fin",
+      "teamId": "Team Id"
+    }
+  },
+  "mySportTeamApp": {
+    "mySportTeamSeason": {
+      "created": "Un nouveau Season a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Season avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Season avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

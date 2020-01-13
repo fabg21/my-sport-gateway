@@ -1,0 +1,46 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.fabg21.mysport.gateway",
+      "nativeLanguage": "en",
+      "microservicePath": "../my-sport-team"
+    },
+    "jhipsterVersion": "6.5.1",
+    "applicationType": "gateway",
+    "baseName": "mySportGateway",
+    "packageName": "com.fabg21.mysport.gateway",
+    "packageFolder": "com/fabg21/mysport/gateway",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NzM0N2I0MDYxYTZhNGQxYjVmMzMxZGU3MzUyODgwOTAyNzViYzYwYmFkMWNjMTJlODg2YzJlNzZiYmZkZGFmNGUwNzYwOTc5MDUwZmMzYWQ2MmFlZTNkNTQwMDc3YzZhODNkMmI2MGY3NjU1OWJjZmZhYjA5ZTY4YTljMGI0NWQ=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "cyborg",
+    "clientThemeVariant": "dark",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "blueprints": []
+  }
+}
