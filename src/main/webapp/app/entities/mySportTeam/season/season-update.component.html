@@ -10,33 +10,21 @@
                         readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamSeason.debut" for="field_debut">Debut</label>
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamSeason.start" for="field_start">Start</label>
                     <div class="input-group">
-                        <input id="field_debut" type="text" class="form-control" name="debut" ngbDatepicker  #debutDp="ngbDatepicker" formControlName="debut"/>
+                        <input id="field_start" type="text" class="form-control" name="start" ngbDatepicker  #startDp="ngbDatepicker" formControlName="start"/>
                         <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="debutDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                            <button type="button" class="btn btn-secondary" (click)="startDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
-                    </div>
-                    <div *ngIf="editForm.get('debut').invalid && (editForm.get('debut').dirty || editForm.get('debut').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('debut').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamSeason.fin" for="field_fin">Fin</label>
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamSeason.end" for="field_end">End</label>
                     <div class="input-group">
-                        <input id="field_fin" type="text" class="form-control" name="fin" ngbDatepicker  #finDp="ngbDatepicker" formControlName="fin"/>
+                        <input id="field_end" type="text" class="form-control" name="end" ngbDatepicker  #endDp="ngbDatepicker" formControlName="end"/>
                         <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="finDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                            <button type="button" class="btn btn-secondary" (click)="endDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
                         </span>
-                    </div>
-                    <div *ngIf="editForm.get('fin').invalid && (editForm.get('fin').dirty || editForm.get('fin').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('fin').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
                     </div>
                 </div>
 
@@ -45,6 +33,12 @@
                     <select class="form-control" id="field_teamId" name="teamId" formControlName="teamIdId">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="teamOption.id" *ngFor="let teamOption of teams; trackBy: trackTeamById">{{teamOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="mySportGatewayApp.mySportTeamSeason.players" for="field_players">Players</label>
+                    <select class="form-control" id="field_players" multiple name="players" formControlName="players">
+                        <option [ngValue]="getSelected(editForm.get('players').value, playerOption)" *ngFor="let playerOption of players; trackBy: trackPlayerById">{{playerOption.id}}</option>
                     </select>
                 </div>
             </div>

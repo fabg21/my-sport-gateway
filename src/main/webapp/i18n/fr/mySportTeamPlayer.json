@@ -1,0 +1,33 @@
+{
+  "mySportGatewayApp": {
+    "mySportTeamPlayer": {
+      "home": {
+        "title": "Players",
+        "createLabel": "Créer un nouveau Player",
+        "createOrEditLabel": "Créer ou éditer un Player",
+        "notFound": "Aucun Player trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Player {{ id }} ?"
+      },
+      "detail": {
+        "title": "Player"
+      },
+      "firstname": "Firstname",
+      "lastname": "Lastname",
+      "dateOfBirth": "Date Of Birth",
+      "email": "Email",
+      "address": "Address",
+      "phone": "Phone",
+      "avatar": "Avatar",
+      "seasons": "Seasons"
+    }
+  },
+  "mySportTeamApp": {
+    "mySportTeamPlayer": {
+      "created": "Un nouveau Player a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Player avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Player avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

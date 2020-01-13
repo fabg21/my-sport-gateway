@@ -1,12 +1,14 @@
 import { Moment } from 'moment';
+import { IPlayer } from 'app/shared/model/mySportTeam/player.model';
 
 export interface ISeason {
   id?: number;
-  debut?: Moment;
-  fin?: Moment;
+  start?: Moment;
+  end?: Moment;
   teamIdId?: number;
+  players?: IPlayer[];
 }
 
 export class Season implements ISeason {
-  constructor(public id?: number, public debut?: Moment, public fin?: Moment, public teamIdId?: number) {}
+  constructor(public id?: number, public start?: Moment, public end?: Moment, public teamIdId?: number, public players?: IPlayer[]) {}
 }

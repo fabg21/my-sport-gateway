@@ -11,6 +11,8 @@ import { ISeason, Season } from 'app/shared/model/mySportTeam/season.model';
 import { SeasonService } from './season.service';
 import { ITeam } from 'app/shared/model/mySportTeam/team.model';
 import { TeamService } from 'app/entities/mySportTeam/team/team.service';
+import { IPlayer } from 'app/shared/model/mySportTeam/player.model';
+import { PlayerService } from 'app/entities/mySportTeam/player/player.service';
 
 @Component({
   selector: 'jhi-season-update',
@@ -20,20 +22,24 @@ export class SeasonUpdateComponent implements OnInit {
   isSaving: boolean;
 
   teams: ITeam[];
-  debutDp: any;
-  finDp: any;
+
+  players: IPlayer[];
+  startDp: any;
+  endDp: any;
 
   editForm = this.fb.group({
     id: [],
-    debut: [null, [Validators.required]],
-    fin: [null, [Validators.required]],
-    teamIdId: []
+    start: [],
+    end: [],
+    teamIdId: [],
+    players: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected seasonService: SeasonService,
     protected teamService: TeamService,
+    protected playerService: PlayerService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -46,14 +52,18 @@ export class SeasonUpdateComponent implements OnInit {
     this.teamService
       .query()
       .subscribe((res: HttpResponse<ITeam[]>) => (this.teams = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.playerService
+      .query()
+      .subscribe((res: HttpResponse<IPlayer[]>) => (this.players = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(season: ISeason) {
     this.editForm.patchValue({
       id: season.id,
-      debut: season.debut,
-      fin: season.fin,
-      teamIdId: season.teamIdId
+      start: season.start,
+      end: season.end,
+      teamIdId: season.teamIdId,
+      players: season.players
     });
   }
 
@@ -75,9 +85,10 @@ export class SeasonUpdateComponent implements OnInit {
     return {
       ...new Season(),
       id: this.editForm.get(['id']).value,
-      debut: this.editForm.get(['debut']).value,
-      fin: this.editForm.get(['fin']).value,
-      teamIdId: this.editForm.get(['teamIdId']).value
+      start: this.editForm.get(['start']).value,
+      end: this.editForm.get(['end']).value,
+      teamIdId: this.editForm.get(['teamIdId']).value,
+      players: this.editForm.get(['players']).value
     };
   }
 
@@ -99,5 +110,20 @@ export class SeasonUpdateComponent implements OnInit {
 
   trackTeamById(index: number, item: ITeam) {
     return item.id;
+  }
+
+  trackPlayerById(index: number, item: IPlayer) {
+    return item.id;
+  }
+
+  getSelected(selectedVals: any[], option: any) {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

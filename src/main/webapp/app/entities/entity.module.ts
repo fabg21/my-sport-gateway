@@ -27,6 +27,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'season',
         loadChildren: () => import('./mySportTeam/season/season.module').then(m => m.MySportTeamSeasonModule)
+      },
+      {
+        path: 'player',
+        loadChildren: () => import('./mySportTeam/player/player.module').then(m => m.MySportTeamPlayerModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

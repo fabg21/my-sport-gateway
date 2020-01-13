@@ -3,15 +3,15 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { take, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
-import { SeasonService } from 'app/entities/mySportTeam/season/season.service';
-import { ISeason, Season } from 'app/shared/model/mySportTeam/season.model';
+import { PlayerService } from 'app/entities/mySportTeam/player/player.service';
+import { IPlayer, Player } from 'app/shared/model/mySportTeam/player.model';
 
 describe('Service Tests', () => {
-  describe('Season Service', () => {
+  describe('Player Service', () => {
     let injector: TestBed;
-    let service: SeasonService;
+    let service: PlayerService;
     let httpMock: HttpTestingController;
-    let elemDefault: ISeason;
+    let elemDefault: IPlayer;
     let expectedResult;
     let currentDate: moment.Moment;
     beforeEach(() => {
@@ -20,19 +20,18 @@ describe('Service Tests', () => {
       });
       expectedResult = {};
       injector = getTestBed();
-      service = injector.get(SeasonService);
+      service = injector.get(PlayerService);
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Season(0, currentDate, currentDate);
+      elemDefault = new Player(0, 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            start: currentDate.format(DATE_FORMAT),
-            end: currentDate.format(DATE_FORMAT)
+            dateOfBirth: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
@@ -46,24 +45,22 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: elemDefault });
       });
 
-      it('should create a Season', () => {
+      it('should create a Player', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            start: currentDate.format(DATE_FORMAT),
-            end: currentDate.format(DATE_FORMAT)
+            dateOfBirth: currentDate.format(DATE_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
-            start: currentDate,
-            end: currentDate
+            dateOfBirth: currentDate
           },
           returnedFromService
         );
         service
-          .create(new Season(null))
+          .create(new Player(null))
           .pipe(take(1))
           .subscribe(resp => (expectedResult = resp));
         const req = httpMock.expectOne({ method: 'POST' });
@@ -71,19 +68,23 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should update a Season', () => {
+      it('should update a Player', () => {
         const returnedFromService = Object.assign(
           {
-            start: currentDate.format(DATE_FORMAT),
-            end: currentDate.format(DATE_FORMAT)
+            firstname: 'BBBBBB',
+            lastname: 'BBBBBB',
+            dateOfBirth: currentDate.format(DATE_FORMAT),
+            email: 'BBBBBB',
+            address: 'BBBBBB',
+            phone: 'BBBBBB',
+            avatar: 'BBBBBB'
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            start: currentDate,
-            end: currentDate
+            dateOfBirth: currentDate
           },
           returnedFromService
         );
@@ -96,18 +97,22 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should return a list of Season', () => {
+      it('should return a list of Player', () => {
         const returnedFromService = Object.assign(
           {
-            start: currentDate.format(DATE_FORMAT),
-            end: currentDate.format(DATE_FORMAT)
+            firstname: 'BBBBBB',
+            lastname: 'BBBBBB',
+            dateOfBirth: currentDate.format(DATE_FORMAT),
+            email: 'BBBBBB',
+            address: 'BBBBBB',
+            phone: 'BBBBBB',
+            avatar: 'BBBBBB'
           },
           elemDefault
         );
         const expected = Object.assign(
           {
-            start: currentDate,
-            end: currentDate
+            dateOfBirth: currentDate
           },
           returnedFromService
         );
@@ -124,7 +129,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toContainEqual(expected);
       });
 
-      it('should delete a Season', () => {
+      it('should delete a Player', () => {
         service.delete(123).subscribe(resp => (expectedResult = resp.ok));
 
         const req = httpMock.expectOne({ method: 'DELETE' });

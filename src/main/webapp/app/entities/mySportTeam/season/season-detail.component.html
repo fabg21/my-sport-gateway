@@ -5,19 +5,25 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.debut">Debut</span></dt>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.start">Start</span></dt>
                 <dd>
-                    <span>{{season.debut}}</span>
+                    <span>{{season.start}}</span>
                 </dd>
-                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.fin">Fin</span></dt>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.end">End</span></dt>
                 <dd>
-                    <span>{{season.fin}}</span>
+                    <span>{{season.end}}</span>
                 </dd>
                 <dt><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.teamId">Team Id</span></dt>
                 <dd>
                     <div *ngIf="season.teamIdId">
                         <a [routerLink]="['/team', season.teamIdId, 'view']">{{season.teamIdId}}</a>
                     </div>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.players">Players</span></dt>
+                <dd>
+                    <span *ngFor="let players of season.players; let last = last">
+                        <a [routerLink]="['/player', players?.id, 'view' ]">{{players.id}}</a>{{last ? '' : ', '}}
+                    </span>
                 </dd>
             </dl>
 

@@ -1,0 +1,67 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.home.title">Players</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-player" [routerLink]="['/player/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="mySportGatewayApp.mySportTeamPlayer.home.createLabel">
+            Create a new Player
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="players?.length === 0">
+        <span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.home.notFound">No players found</span>
+    </div>
+    <div class="table-responsive" *ngIf="players?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.firstname">Firstname</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.lastname">Lastname</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.dateOfBirth">Date Of Birth</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.email">Email</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.address">Address</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.phone">Phone</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamPlayer.avatar">Avatar</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let player of players ;trackBy: trackId">
+                <td><a [routerLink]="['/player', player.id, 'view' ]">{{player.id}}</a></td>
+                <td>{{player.firstname}}</td>
+                <td>{{player.lastname}}</td>
+                <td>{{player.dateOfBirth | date:'mediumDate'}}</td>
+                <td>{{player.email}}</td>
+                <td>{{player.address}}</td>
+                <td>{{player.phone}}</td>
+                <td>{{player.avatar}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/player', player.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/player', player.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(player)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

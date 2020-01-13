@@ -13,9 +13,10 @@
       "detail": {
         "title": "Season"
       },
-      "debut": "Debut",
-      "fin": "Fin",
-      "teamId": "Team Id"
+      "start": "Start",
+      "end": "End",
+      "teamId": "Team Id",
+      "players": "Players"
     }
   },
   "mySportTeamApp": {

@@ -19,21 +19,27 @@
             <thead>
             <tr>
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.debut">Debut</span></th>
-            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.fin">Fin</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.start">Start</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.end">End</span></th>
             <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.teamId">Team Id</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.players">Players</span></th>
             <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let season of seasons ;trackBy: trackId">
                 <td><a [routerLink]="['/season', season.id, 'view' ]">{{season.id}}</a></td>
-                <td>{{season.debut | date:'mediumDate'}}</td>
-                <td>{{season.fin | date:'mediumDate'}}</td>
+                <td>{{season.start | date:'mediumDate'}}</td>
+                <td>{{season.end | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="season.teamIdId">
                         <a [routerLink]="['/team', season.teamIdId , 'view' ]" >{{season.teamIdId}}</a>
                     </div>
+                </td>
+                <td>
+                    <span *ngFor="let players of season.players; let last = last">
+                            <a class="form-control-static" [routerLink]="['/player', players?.id, 'view' ]">{{players.id}}</a>{{last ? '' : ', '}}
+                        </span>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">

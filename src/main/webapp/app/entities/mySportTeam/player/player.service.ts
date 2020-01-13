@@ -8,41 +8,41 @@ import { map } from 'rxjs/operators';
 
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
-import { ISeason } from 'app/shared/model/mySportTeam/season.model';
+import { IPlayer } from 'app/shared/model/mySportTeam/player.model';
 
-type EntityResponseType = HttpResponse<ISeason>;
-type EntityArrayResponseType = HttpResponse<ISeason[]>;
+type EntityResponseType = HttpResponse<IPlayer>;
+type EntityArrayResponseType = HttpResponse<IPlayer[]>;
 
 @Injectable({ providedIn: 'root' })
-export class SeasonService {
-  public resourceUrl = SERVER_API_URL + 'services/mysportteam/api/seasons';
+export class PlayerService {
+  public resourceUrl = SERVER_API_URL + 'services/mysportteam/api/players';
 
   constructor(protected http: HttpClient) {}
 
-  create(season: ISeason): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(season);
+  create(player: IPlayer): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(player);
     return this.http
-      .post<ISeason>(this.resourceUrl, copy, { observe: 'response' })
+      .post<IPlayer>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
-  update(season: ISeason): Observable<EntityResponseType> {
-    const copy = this.convertDateFromClient(season);
+  update(player: IPlayer): Observable<EntityResponseType> {
+    const copy = this.convertDateFromClient(player);
     return this.http
-      .put<ISeason>(this.resourceUrl, copy, { observe: 'response' })
+      .put<IPlayer>(this.resourceUrl, copy, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   find(id: number): Observable<EntityResponseType> {
     return this.http
-      .get<ISeason>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+      .get<IPlayer>(`${this.resourceUrl}/${id}`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http
-      .get<ISeason[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .get<IPlayer[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
@@ -50,27 +50,24 @@ export class SeasonService {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
-  protected convertDateFromClient(season: ISeason): ISeason {
-    const copy: ISeason = Object.assign({}, season, {
-      start: season.start != null && season.start.isValid() ? season.start.format(DATE_FORMAT) : null,
-      end: season.end != null && season.end.isValid() ? season.end.format(DATE_FORMAT) : null
+  protected convertDateFromClient(player: IPlayer): IPlayer {
+    const copy: IPlayer = Object.assign({}, player, {
+      dateOfBirth: player.dateOfBirth != null && player.dateOfBirth.isValid() ? player.dateOfBirth.format(DATE_FORMAT) : null
     });
     return copy;
   }
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.start = res.body.start != null ? moment(res.body.start) : null;
-      res.body.end = res.body.end != null ? moment(res.body.end) : null;
+      res.body.dateOfBirth = res.body.dateOfBirth != null ? moment(res.body.dateOfBirth) : null;
     }
     return res;
   }
 
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
-      res.body.forEach((season: ISeason) => {
-        season.start = season.start != null ? moment(season.start) : null;
-        season.end = season.end != null ? moment(season.end) : null;
+      res.body.forEach((player: IPlayer) => {
+        player.dateOfBirth = player.dateOfBirth != null ? moment(player.dateOfBirth) : null;
       });
     }
     return res;
