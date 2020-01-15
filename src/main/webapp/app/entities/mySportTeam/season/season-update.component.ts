@@ -31,6 +31,7 @@ export class SeasonUpdateComponent implements OnInit {
     id: [],
     start: [],
     end: [],
+    current: [],
     teamIdId: [],
     players: []
   });
@@ -62,6 +63,7 @@ export class SeasonUpdateComponent implements OnInit {
       id: season.id,
       start: season.start,
       end: season.end,
+      current: season.current,
       teamIdId: season.teamIdId,
       players: season.players
     });
@@ -87,6 +89,7 @@ export class SeasonUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       start: this.editForm.get(['start']).value,
       end: this.editForm.get(['end']).value,
+      current: this.editForm.get(['current']).value,
       teamIdId: this.editForm.get(['teamIdId']).value,
       players: this.editForm.get(['players']).value
     };

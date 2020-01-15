@@ -21,6 +21,7 @@
             <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
             <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.start">Start</span></th>
             <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.end">End</span></th>
+            <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.current">Current</span></th>
             <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.teamId">Team Id</span></th>
             <th scope="col" ><span jhiTranslate="mySportGatewayApp.mySportTeamSeason.players">Players</span></th>
             <th scope="col"></th>
@@ -31,6 +32,7 @@
                 <td><a [routerLink]="['/season', season.id, 'view' ]">{{season.id}}</a></td>
                 <td>{{season.start | date:'mediumDate'}}</td>
                 <td>{{season.end | date:'mediumDate'}}</td>
+                <td>{{season.current}}</td>
                 <td>
                     <div *ngIf="season.teamIdId">
                         <a [routerLink]="['/team', season.teamIdId , 'view' ]" >{{season.teamIdId}}</a>

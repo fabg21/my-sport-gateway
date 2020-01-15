@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Season(0, currentDate, currentDate);
+      elemDefault = new Season(0, currentDate, currentDate, false);
     });
 
     describe('Service methods', () => {
@@ -75,7 +75,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             start: currentDate.format(DATE_FORMAT),
-            end: currentDate.format(DATE_FORMAT)
+            end: currentDate.format(DATE_FORMAT),
+            current: true
           },
           elemDefault
         );
@@ -100,7 +101,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             start: currentDate.format(DATE_FORMAT),
-            end: currentDate.format(DATE_FORMAT)
+            end: currentDate.format(DATE_FORMAT),
+            current: true
           },
           elemDefault
         );

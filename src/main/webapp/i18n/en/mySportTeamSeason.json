@@ -15,6 +15,7 @@
       },
       "start": "Start",
       "end": "End",
+      "current": "Current",
       "teamId": "Team Id",
       "players": "Players"
     }
