@@ -1,0 +1,35 @@
+{
+  "mySportGatewayApp": {
+    "mySportTeamMatch": {
+      "home": {
+        "title": "Matches",
+        "createLabel": "Create a new Match",
+        "createOrEditLabel": "Create or edit a Match",
+        "notFound": "No Matches found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Match {{ id }}?"
+      },
+      "detail": {
+        "title": "Match"
+      },
+      "type": "Type",
+      "date": "Date",
+      "appointmentHour": "Appointment Hour",
+      "startTime": "Start Time",
+      "place": "Place",
+      "result": "Result",
+      "scoreFor": "Score For",
+      "scoreAgainst": "Score Against",
+      "opponent": "Opponent",
+      "calendar": "Calendar"
+    }
+  },
+  "mySportTeamApp": {
+    "mySportTeamMatch": {
+      "created": "A new Match is created with identifier {{ param }}",
+      "updated": "A Match is updated with identifier {{ param }}",
+      "deleted": "A Match is deleted with identifier {{ param }}"
+    }
+  }
+}

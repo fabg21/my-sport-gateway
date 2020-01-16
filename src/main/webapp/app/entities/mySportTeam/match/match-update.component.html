@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-match-heading" jhiTranslate="mySportGatewayApp.mySportTeamMatch.home.createOrEditLabel">Create or edit a Match</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.type" for="field_type">Type</label>
+                    <input type="text" class="form-control" name="type" id="field_type"
+                           formControlName="type"/>
+                    <div *ngIf="editForm.get('type').invalid && (editForm.get('type').dirty || editForm.get('type').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('type').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" formControlName="date"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('date').invalid && (editForm.get('date').dirty || editForm.get('date').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('date').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.appointmentHour" for="field_appointmentHour">Appointment Hour</label>
+                    <div class="d-flex">
+                        <input id="field_appointmentHour" type="datetime-local" class="form-control" name="appointmentHour" formControlName="appointmentHour" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.startTime" for="field_startTime">Start Time</label>
+                    <div class="d-flex">
+                        <input id="field_startTime" type="datetime-local" class="form-control" name="startTime" formControlName="startTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.place" for="field_place">Place</label>
+                    <input type="text" class="form-control" name="place" id="field_place"
+                           formControlName="place"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.result" for="field_result">Result</label>
+                    <input type="number" class="form-control" name="result" id="field_result"
+                           formControlName="result"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.scoreFor" for="field_scoreFor">Score For</label>
+                    <input type="number" class="form-control" name="scoreFor" id="field_scoreFor"
+                           formControlName="scoreFor"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.scoreAgainst" for="field_scoreAgainst">Score Against</label>
+                    <input type="number" class="form-control" name="scoreAgainst" id="field_scoreAgainst"
+                           formControlName="scoreAgainst"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.opponent" for="field_opponent">Opponent</label>
+                    <select class="form-control" id="field_opponent" name="opponent" formControlName="opponentId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="opposingTeamOption.id" *ngFor="let opposingTeamOption of opposingteams; trackBy: trackOpposingTeamById">{{opposingTeamOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="mySportGatewayApp.mySportTeamMatch.calendar" for="field_calendar">Calendar</label>
+                    <select class="form-control" id="field_calendar" name="calendar" formControlName="calendarId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="calendarOption.id" *ngFor="let calendarOption of calendars; trackBy: trackCalendarById">{{calendarOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

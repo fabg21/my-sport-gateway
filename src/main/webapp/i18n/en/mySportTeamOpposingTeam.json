@@ -1,0 +1,26 @@
+{
+  "mySportGatewayApp": {
+    "mySportTeamOpposingTeam": {
+      "home": {
+        "title": "Opposing Teams",
+        "createLabel": "Create a new Opposing Team",
+        "createOrEditLabel": "Create or edit a Opposing Team",
+        "notFound": "No Opposing Teams found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Opposing Team {{ id }}?"
+      },
+      "detail": {
+        "title": "Opposing Team"
+      },
+      "name": "Name"
+    }
+  },
+  "mySportTeamApp": {
+    "mySportTeamOpposingTeam": {
+      "created": "A new Opposing Team is created with identifier {{ param }}",
+      "updated": "A Opposing Team is updated with identifier {{ param }}",
+      "deleted": "A Opposing Team is deleted with identifier {{ param }}"
+    }
+  }
+}

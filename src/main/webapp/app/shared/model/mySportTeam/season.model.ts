@@ -8,6 +8,7 @@ export interface ISeason {
   current?: boolean;
   teamIdId?: number;
   players?: IPlayer[];
+  calendarId?: number;
 }
 
 export class Season implements ISeason {
@@ -17,7 +18,8 @@ export class Season implements ISeason {
     public end?: Moment,
     public current?: boolean,
     public teamIdId?: number,
-    public players?: IPlayer[]
+    public players?: IPlayer[],
+    public calendarId?: number
   ) {
     this.current = this.current || false;
   }

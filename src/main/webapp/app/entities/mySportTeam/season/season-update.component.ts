@@ -13,6 +13,8 @@ import { ITeam } from 'app/shared/model/mySportTeam/team.model';
 import { TeamService } from 'app/entities/mySportTeam/team/team.service';
 import { IPlayer } from 'app/shared/model/mySportTeam/player.model';
 import { PlayerService } from 'app/entities/mySportTeam/player/player.service';
+import { ICalendar } from 'app/shared/model/mySportTeam/calendar.model';
+import { CalendarService } from 'app/entities/mySportTeam/calendar/calendar.service';
 
 @Component({
   selector: 'jhi-season-update',
@@ -24,6 +26,8 @@ export class SeasonUpdateComponent implements OnInit {
   teams: ITeam[];
 
   players: IPlayer[];
+
+  calendars: ICalendar[];
   startDp: any;
   endDp: any;
 
@@ -41,6 +45,7 @@ export class SeasonUpdateComponent implements OnInit {
     protected seasonService: SeasonService,
     protected teamService: TeamService,
     protected playerService: PlayerService,
+    protected calendarService: CalendarService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -56,6 +61,9 @@ export class SeasonUpdateComponent implements OnInit {
     this.playerService
       .query()
       .subscribe((res: HttpResponse<IPlayer[]>) => (this.players = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+    this.calendarService
+      .query()
+      .subscribe((res: HttpResponse<ICalendar[]>) => (this.calendars = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(season: ISeason) {
@@ -116,6 +124,10 @@ export class SeasonUpdateComponent implements OnInit {
   }
 
   trackPlayerById(index: number, item: IPlayer) {
+    return item.id;
+  }
+
+  trackCalendarById(index: number, item: ICalendar) {
     return item.id;
   }
 

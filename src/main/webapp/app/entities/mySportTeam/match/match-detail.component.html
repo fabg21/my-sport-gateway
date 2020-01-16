@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="match">
+            <h2><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.detail.title">Match</span> {{match.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.type">Type</span></dt>
+                <dd>
+                    <span>{{match.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.date">Date</span></dt>
+                <dd>
+                    <span>{{match.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.appointmentHour">Appointment Hour</span></dt>
+                <dd>
+                    <span>{{match.appointmentHour}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.startTime">Start Time</span></dt>
+                <dd>
+                    <span>{{match.startTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.place">Place</span></dt>
+                <dd>
+                    <span>{{match.place}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.result">Result</span></dt>
+                <dd>
+                    <span>{{match.result}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.scoreFor">Score For</span></dt>
+                <dd>
+                    <span>{{match.scoreFor}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.scoreAgainst">Score Against</span></dt>
+                <dd>
+                    <span>{{match.scoreAgainst}}</span>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.opponent">Opponent</span></dt>
+                <dd>
+                    <div *ngIf="match.opponentId">
+                        <a [routerLink]="['/opposing-team', match.opponentId, 'view']">{{match.opponentId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="mySportGatewayApp.mySportTeamMatch.calendar">Calendar</span></dt>
+                <dd>
+                    <div *ngIf="match.calendarId">
+                        <a [routerLink]="['/calendar', match.calendarId, 'view']">{{match.calendarId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/match', match.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

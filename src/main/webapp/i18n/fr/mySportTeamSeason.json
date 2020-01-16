@@ -17,7 +17,8 @@
       "end": "End",
       "current": "Current",
       "teamId": "Team Id",
-      "players": "Players"
+      "players": "Players",
+      "calendar": "Calendar"
     }
   },
   "mySportTeamApp": {
